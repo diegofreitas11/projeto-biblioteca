@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+</head>
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+        <a href="/deslogar/">Logout</a>
+    </header>
+    <article>
+        <h1>Confirmar devolução</h1>
+
+        <form action="{% url 'desbloquear' aluno_id=id %}" method="post">
+            {% csrf_token %}
+            <div id="confirmacao">
+                <span>Confirmar pagamento de {{ valor }} pelo aluno {{ nome }}?</span> <br/>
+
+                <button type="submit" name="op" id="sim" value="sim">Sim</button>
+                <button type="submit" name="op" id="nao" value="nao">Não</button>
+            </div>
+        </form>
+    </article>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="/"><span>Início</span></a></li>
+                <li><a href="/emprestimo/"><span>Realizar Empréstimo</span></a></li>
+                <li><a href="/devolucao/"><span>Registrar Devolução</span></a></li>
+                <li><a href="/novo-aluno/"><span>Cadastrar Aluno</span></a></li>
+                <li><a href="/novo-livro/"><span>Cadastrar Livro</span></a></li>
+                <li><a href="/consultar-alunos/"><span>Consultar Alunos</span></a></li>
+                <li><a href="/alunos-bloqueados/"><span>Alunos Bloqueados</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+
+</body>
+</html>

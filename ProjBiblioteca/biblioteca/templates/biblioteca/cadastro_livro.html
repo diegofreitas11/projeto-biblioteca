@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</head>
+<body onload="preencher_campos({{ campos }}, 'livro')">
+    <header>
+        <h1>Biblioteca</h1>
+        <a href="/deslogar/">Logout</a>
+    </header>
+    <article>
+        <h1>Cadastro de Livro</h1>
+        <form action="{% url 'envio' %}" method="POST" id="cadlivro">
+            {% csrf_token %}
+            <ul>
+                <li><input type="hidden" id="txt_id" name="txt_id"/></li>
+                <li class="esquerda">Nome:<br/> <input type="text" id="txt_nome" name="txt_nome"/> <br/></li>
+                <li class="direita">Genero:<br/> <input type="text" id="txt_genero" name="txt_genero"/><br/></li>
+                <li class="esquerda">Autor:<br/> <input type="text" id="txt_autor" name="txt_autor"/> <br/></li>
+                <li class="direita">Editora:<br/> <input type="text" id="txt_editora" name="txt_editora"/><br/> </li>
+                <li class="esquerda">Ano:<br/> <input type="text" id="txt_ano" name="txt_ano"><br/></li>
+                <li class="direita">Quantidade:<br/> <input type="text" id="txt_qtd" name="txt_qtd"/><br/> </li>
+                <li class="esquerda">Descrição:<br/> <textarea name="txt_descr" id="txt_descr" cols="30" rows="5" wrap="hard"> </textarea><br/></li>
+            </ul>
+            <button name="btn_cadastrar" id="btn_cadastrar" value="insert" class="abaixo" type="submit">Cadastrar</button>
+            {% if mensagem %}
+                <span id="aviso">{{ mensagem }}</span>
+            {% endif %}
+
+
+        </form>
+    </article>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="/"><span>Início</span></a></li>
+                <li><a href="/emprestimo/"><span>Realizar Empréstimo</span></a></li>
+                <li><a href="/devolucao/"><span>Registrar Devolução</span></a></li>
+                <li><a href="/novo-aluno/"><span>Cadastrar Aluno</span></a></li>
+                <li><a href="/novo-livro/"><span>Cadastrar Livro</span></a></li>
+                <li><a href="/consultar-alunos/"><span>Consultar Alunos</span></a></li>
+                <li><a href="/alunos-bloqueados/"><span>Alunos Bloqueados</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+</body>
+</html>

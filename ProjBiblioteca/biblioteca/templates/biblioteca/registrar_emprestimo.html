@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</head>
+<body onload="escolher_livro({{ inicio }},{{ valido }}, '{{ matricula }}', '{{ nome }}')">
+    <header>
+        <h1>Biblioteca</h1>
+        <a href="/deslogar/">Logout</a>
+    </header>
+    <article>
+        <h1>Registrar Empréstimo</h1>
+        <div id="pesquisa_aluno">
+            {% if aviso %}
+                <span id="aviso">{{ aviso }}</span>
+            {% endif %}
+
+            <form action="{% url 'verificar' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" id="procurar_aluno" placeholder="digite a matrícula" name="txt_procurar_aluno"/>
+                <button id="btn_procurar_aluno" class="procurar" name="btn_procurar_aluno" type="submit">Ir</button>
+            </form>
+        </div>
+
+
+        <div id="escolher-livro">
+
+            <h1>Escolha o livro</h1>
+            <form action="{% url 'verificar' %}" method="POST" id="frm_pesquisa">
+                {% csrf_token %}
+                <div id="pesquisa">
+                    <input type="text" name="txt_pesquisa" id="txt_pesquisa"/>
+                    <button type="submit" name="pesquisar" value="{{ matricula }}" id="pesquisar"></button>
+                </div>
+            </form>
+
+            <form action="{% url 'realizado' aluno_id=matricula %}" method="POST">
+                {% csrf_token %}
+                <table id="consulta">
+                    <tr id="cabeça"> <td>id</td> <td>nome</td> <td>autor</td> <td>genero</td> <td>ano</td> <td>quantidade</td> <td>escolher</td>  </tr>
+                    {% for linha in linhas %}
+                        <tr>
+                            <td>{{ linha.id }}</td><td>{{ linha.nome }}</td> <td>{{ linha.autor }}</td> <td>{{ linha.genero }}</td> <td>{{ linha.ano }}</td>
+                            <td>{{ linha.quantidade }}</td> <td><input type="radio" name="selecionar-livro" value="{{ linha.id }}"/></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            <button type="submit" class="abaixo">OK</button>
+            </form>
+        </div>
+
+    </article>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="/"><span>Início</span></a></li>
+                <li><a href="/emprestimo/"><span>Realizar Empréstimo</span></a></li>
+                <li><a href="/devolucao/"><span>Registrar Devolução</span></a></li>
+                <li><a href="/novo-aluno/"><span>Cadastrar Aluno</span></a></li>
+                <li><a href="/novo-livro/"><span>Cadastrar Livro</span></a></li>
+                <li><a href="/consultar-alunos/"><span>Consultar Alunos</span></a></li>
+                <li><a href="/alunos-bloqueados/"><span>Alunos Bloqueados</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+</body>
+</html>

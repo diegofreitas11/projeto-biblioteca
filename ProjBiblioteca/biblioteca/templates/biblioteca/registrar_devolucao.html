@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+</head>
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+        <a href="/deslogar/">Logout</a>
+    </header>
+    <article>
+        <h1>Consultar empréstimos</h1>
+        {% if aviso %}
+                <span id="aviso">{{ aviso }}</span>
+            {% endif %}
+
+        <form action="{% url 'devolucao' %}" method="POST" id="frm_pesquisa">
+                 {% csrf_token %}
+                <div id="pesquisa">
+                    <input type="text" name="txt_pesquisa" id="txt_pesquisa"/>
+                    <button type="submit" name="pesquisar" id="pesquisar"></button>
+                </div>
+        </form>
+
+        <form action="{% url 'confirmar-devolucao' %}" method="POST">
+            {% csrf_token %}
+            <table id="consulta">
+                <tr id="cabeça"><td>id</td> <td>aluno</td> <td>livro</td> <td>prazo</td> <td>selecionar</td></tr>
+                {% for linha in linhas %}
+                    <tr><td>{{ linha.id }}</td> <td>{{ linha.aluno }}</td> <td>{{ linha.livro }}</td>
+                        <td>{{ linha.prazo }}</td> <td><input type="radio" name="op_devolucao" value="{{ linha.id }}"/> </td></tr>
+                {% endfor %}
+
+            </table>
+            <button class="abaixo" type="submit">Registrar devolução</button>
+        </form>
+    </article>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="/"><span>Início</span></a></li>
+                <li><a href="/emprestimo/"><span>Realizar Empréstimo</span></a></li>
+                <li><a href="/devolucao/"><span>Registrar Devolução</span></a></li>
+                <li><a href="/novo-aluno/"><span>Cadastrar Aluno</span></a></li>
+                <li><a href="/novo-livro/"><span>Cadastrar Livro</span></a></li>
+                <li><a href="/consultar-alunos/"><span>Consultar Alunos</span></a></li>
+                <li><a href="/alunos-bloqueados/"><span>Alunos Bloqueados</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+</body>
+</html>

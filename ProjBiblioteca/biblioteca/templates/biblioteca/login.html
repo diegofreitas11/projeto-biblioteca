@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+</head>
+<body>
+    <div class="container">
+
+        <div class="central">
+
+            <form action="{% url 'home' %}" method="POST">
+                {% csrf_token %}
+                <div class="campo">
+                    <span>Usuário:</span> <br/> <br/>
+                    <input type="text" name="txt_usuario"> <br/>
+                </div>
+                <div class="campo">
+                    <span>Senha:</span>  <br/> <br/>
+                    <input type="password" name="txt_senha"> <br/>
+                </div>
+                <div class="campo">
+                    <br/>
+                    <button id="login" type="submit">Entrar</button>
+                </div>
+            </form>
+            {% if aviso %}
+                <span id="aviso">{{ aviso }}</span>
+            {% endif %}
+        </div>
+
+    </div>
+
+</body>
+</html>

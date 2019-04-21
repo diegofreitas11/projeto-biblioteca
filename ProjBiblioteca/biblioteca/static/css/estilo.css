@@ -1,0 +1,344 @@
+@charset "UTF-8";
+
+div.container{
+    position:relative;
+    border: solid 1px;
+    box-shadow: 5px 2px;
+    width: 250px;
+    height: 375px;
+    margin-top:20%;
+    margin-left:50%;
+    transform: translate(-50%, -50%);
+    background-color: #dfdfdf;
+    border-radius: 10px;
+}
+
+div.container span#aviso{
+    position:absolute;
+    font-size: 10pt;
+    color: red;
+
+}
+
+div.central{
+    width: 190px;
+    height: 200px;
+    position: relative;
+    margin-top:75%;
+    margin-left:50%;
+    transform: translate(-50%, -40%);
+
+
+}
+
+div.campo{
+    position:relative;
+    margin:10% 0 10% 0;
+    /*border-style: solid;
+    border-color:red;*/
+}
+
+div.campo button{
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div.campo span{
+    position: absolute;
+    font-family: calibri;
+    font-size: 15pt;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div.campo input{
+    position: absolute;
+    height: 20px;
+    border-radius: 10px;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button#login{
+    width: 50%;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #b3e0ff;
+}
+
+div#pesquisa{
+    position: relative;
+    margin-left: 90px;
+    width: 520px;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+div#pesquisa input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5px;
+    font-family: courier;
+}
+
+div#pesquisa button{
+    position:absolute;
+    width:10%;
+    height: 35px;
+    right: -3px;
+    z-index: 2;
+}
+
+div#confirmacao{
+    position: relative;
+    margin-top: 50px;
+}
+
+div#confirmacao span{
+    position:absolute;
+    display: inline-block;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top:20px;
+}
+
+div#confirmacao button{
+    top:120px;
+}
+div#confirmacao button#sim{
+    position:absolute;
+    right: 52%;
+}
+
+div#confirmacao button#nao{
+    position:absolute;
+    left: 52%;
+}
+
+
+body{
+    background-color:white;
+    font-family: courier;
+}
+
+header{
+    font-family: courier;
+    position:absolute;
+    width: 100%;
+    height: 150px;
+    background-image: linear-gradient(#808080, #A9A9A9);
+    margin: -20px -1px 0px -10px;
+}
+
+header a{
+    position:absolute;
+    bottom: 3px;
+    right: 3px;
+    text-decoration: none;
+    color: black;
+}
+
+header h1{
+    text-align:center;
+
+}
+
+article, aside{
+    margin-top:130px;
+    display:block;
+}
+
+article{
+    width: 80%;
+    float: right;
+
+}
+
+aside{
+
+    width: 20%;
+    float: left;
+    background-color:#c0c0c0;
+    height: 700px;
+    margin-left:-10px;
+}
+
+aside ul{
+    list-style:none;
+    margin-top:0px;
+    width:100%;
+    margin-left:-20px;
+
+}
+
+
+
+aside ul li{
+    width: 100%;
+    height: 50px;
+    background-image: linear-gradient(#808080, #A9A9A9);
+    margin-left:-20px;
+}
+
+article ul{
+    list-style:none;
+    width:800px;
+    font-family:courier;
+    font-size:16pt;
+    margin-left:60px;
+}
+
+article h1{
+    position:relative;
+    font-family:courier;
+    text-align: center;
+}
+
+div#pesquisa_aluno{
+    margin-left:60px;
+}
+
+article input#procurar_aluno{
+    display:inline-block;
+    width:70%;
+    height: 30px;
+    font-size:16pt;
+}
+
+button.procurar{
+    display:inline-block;
+    margin-left:20px;
+    width:10%;
+    height:30px;
+}
+
+button.abaixo{
+    display:block;
+}
+
+
+
+article ul li{
+    padding: 5px;
+}
+
+article ul li.esquerda{
+    width: 400px;
+    float:left;
+
+}
+
+article ul li.esquerda input{
+    width: 300px;
+    border-radius:10px;
+    height:20px;
+
+}
+
+article ul input#txt_qtd{
+    width: 50px;
+}
+
+article ul input#descricao{
+    width: 300px;
+    height: 80px;
+}
+
+article ul li.direita{
+    width: 380px;
+    float:right;
+}
+
+article ul li.direita input{
+    width: 300px;
+    border-radius:10px;
+    height: 20px;
+
+}
+
+form#cadlivro textarea{
+   border-radius: 10px;
+}
+
+article button.abaixo{
+    margin-left:50%;
+    margin-top:15px;
+    transform: translate(-50%,0);
+    width: 100px;
+    height:50px;
+    font-family:courier;
+}
+
+
+aside ul li:hover{
+    background-color:#dcdcdc;
+}
+
+aside ul li a{
+    color:black;
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    width:100%;
+    height:100%;
+}
+
+table#consulta{
+    margin-left:50%;
+    transform: translate(-50%,0);
+    font-family: courier;
+    font-size: 12pt;
+    border-spacing: 0px;
+    background-color: #ffffff;
+
+}
+
+table#consulta tr#cabeça{
+    background-color: #A9A9A9;
+}
+
+table#consulta td{
+    border: 1px solid;
+    padding: 0 30px 0 30px;
+}
+
+
+
+button#pesquisar{
+    width:24px;
+    height:24px;
+}
+
+div.info{
+    border-top: 1px solid;
+    width: 100%;
+    margin-left:-5px;
+
+}
+
+div.info h2{
+    font-family: courier
+}
+
+/*///////////////////////////////*/
+
+label#label_invalido{
+    font-size: 10pt;
+    display: none;
+    font-color:red;
+}
+
+div#escolher-livro{
+    display: none;
+    position:relative;
+}
+
+
+/*div#escolher-livro button{
+    position:relative;
+    margin-left:50%;
+}*/
+

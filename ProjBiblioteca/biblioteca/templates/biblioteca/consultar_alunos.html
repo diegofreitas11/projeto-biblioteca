@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+</head>
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+        <a href="/deslogar/">Logout</a>
+    </header>
+    <article>
+        <h1>Alunos Cadastrados</h1>
+        <div id="seila">
+        <form action="{% url 'pesquisa-alunos' %}" method="POST">
+            {% csrf_token %}
+            <div id="pesquisa">
+                <input type="text" name="txt_pesquisa" id="txt_pesquisa"/>
+                <button type="submit" name="pesquisar" id="pesquisar"></button>
+            </div>
+        </form>
+        </div>
+
+        <table id="consulta">
+            <tr id="cabeça"> <td>matrícula</td> <td>nome</td> <td>período</td> <td>ano</td> <td>editar</td>   </tr>
+            {% for linha in linhas %}
+                <tr>
+                    <td>{{ linha.matricula }}</td><td>{{ linha.nome }}</td> <td>{{ linha.periodo }}</td> <td>{{ linha.ano }}</td>
+                    <td><a href="{% url 'editaraluno' value=linha.matricula %}">Editar</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </article>
+    <aside>
+        <nav>
+            <ul>
+                <li><a href="/"><span>Início</span></a></li>
+                <li><a href="/emprestimo/"><span>Realizar Empréstimo</span></a></li>
+                <li><a href="/devolucao/"><span>Registrar Devolução</span></a></li>
+                <li><a href="/novo-aluno/"><span>Cadastrar Aluno</span></a></li>
+                <li><a href="/novo-livro/"><span>Cadastrar Livro</span></a></li>
+                <li><a href="/consultar-alunos/"><span>Consultar Alunos</span></a></li>
+                <li><a href="/alunos-bloqueados/"><span>Alunos Bloqueados</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+</body>
+</html>
